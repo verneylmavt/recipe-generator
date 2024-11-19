@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>{{ name }} - Recipe</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/styles.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">🍳 Recipe Generator</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+    </nav>
+
+    <div class="container my-5 fade-in">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h2 class="card-title text-center">{{ name }}</h2>
+          <p class="text-center text-muted">
+            <i class="fas fa-clock"></i> Total Time: {{ total_time }}
+          </p>
+          <hr />
+          <div class="mb-4">
+            <h4>
+              <i class="fas fa-shopping-basket text-success me-2"></i
+              >Ingredients
+            </h4>
+            <ul class="list-group list-group-flush">
+              {% for ingredient in ingredients %}
+              <li class="list-group-item">
+                <i class="fas fa-check-circle text-success me-2"></i>{{
+                ingredient }}
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+          <div class="mb-4">
+            <h4>
+              <i class="fas fa-utensils text-warning me-2"></i>Instructions
+            </h4>
+            <ol class="list-group list-group-numbered list-group-flush">
+              {% for step in steps %}
+              <li class="list-group-item">{{ step }}</li>
+              {% endfor %}
+            </ol>
+          </div>
+          <div class="mb-4">
+            <h4>
+              <i class="fas fa-heartbeat text-danger me-2"></i>Nutritional
+              Information
+            </h4>
+            {% if nutrition %}
+            <div class="row nutrition-info">
+              <div class="col-md-3 col-sm-6 mb-3">
+                <div class="card h-100">
+                  <div class="card-body text-center">
+                    <i class="fas fa-fire-alt fa-2x text-warning mb-2"></i>
+                    <h5 class="card-title">Calories</h5>
+                    <p class="card-text">{{ nutrition.calories }} kcal</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 col-sm-6 mb-3">
+                <div class="card h-100">
+                  <div class="card-body text-center">
+                    <i
+                      class="fas fa-drumstick-bite fa-2x text-primary mb-2"
+                    ></i>
+                    <h5 class="card-title">Protein</h5>
+                    <p class="card-text">{{ nutrition.protein }} g</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 col-sm-6 mb-3">
+                <div class="card h-100">
+                  <div class="card-body text-center">
+                    <i class="fas fa-cheese fa-2x text-warning mb-2"></i>
+                    <h5 class="card-title">Fat</h5>
+                    <p class="card-text">{{ nutrition.fat }} g</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 col-sm-6 mb-3">
+                <div class="card h-100">
+                  <div class="card-body text-center">
+                    <i class="fas fa-bread-slice fa-2x text-success mb-2"></i>
+                    <h5 class="card-title">Carbohydrates</h5>
+                    <p class="card-text">{{ nutrition.carbohydrates }} g</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% else %}
+            <p>Nutritional information is unavailable.</p>
+            {% endif %}
+          </div>
+          <div class="d-flex justify-content-center">
+            <a href="{{ url_for('index') }}" class="btn btn-secondary me-3"
+              ><i class="fas fa-arrow-left me-2"></i>Back</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="bg-dark text-white text-center py-3"></footer>
+
+    <script
+      src="https://code.jquery.com/jquery-3.6.4.min.js"
+      integrity="sha256-/xUj+3OJ+Y7y4QJ1UABE1q7tyW8x2ci4kC3SujcLtwE="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"
+      integrity="sha256-lYWgYr3Oqj8+0dJ/Z9LQ2u4vfYprK1h0z7bDQBMnYqc="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-z6vh1xmpq3e1OXdGsVt90Eu8MfKqGSLU/ENRAiGWhYgoN5Q1r7SaoRrmF5WQXqNQ"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"
+      integrity="sha384-OgVRvuATP1z7JjHLkuOUa4GyP6F7AW7QXj7YMBzuVoVuZ3ynwE7aocXBMm5qXkF4"
+      crossorigin="anonymous"
+    ></script>
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+  </body>
+</html>

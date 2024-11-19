@@ -1,0 +1,170 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f8f9fa;
+    color: #212529;
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+.hero {
+    background: url('../assets/images/hero-background.jpg') no-repeat center center/cover;
+    height: 60vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    animation: fadeIn 2s forwards;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 128, 0, 0.6);
+}
+
+.hero .container {
+    position: relative;
+    z-index: 1;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.hero p {
+    font-size: 1.25rem;
+}
+
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+#recipe-form .form-control {
+    border-radius: 50px;
+    padding: 15px 20px;
+    transition: all 0.3s ease;
+}
+
+#recipe-form .form-control:focus {
+    box-shadow: none;
+    border-color: #28a745;
+}
+
+#recipe-form button {
+    border-radius: 50px;
+    padding: 15px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#recipe-form button:hover {
+    background-color: #218838;
+    transform: translateY(-3px);
+}
+
+.card-title {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.card-text {
+    font-size: 1rem;
+}
+
+.list-group-item {
+    border: none;
+    padding-left: 0;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.list-group-item:hover {
+    background-color: rgba(40, 167, 69, 0.1);
+}
+
+.list-group-item i {
+    color: #28a745;
+    margin-right: 10px;
+}
+
+.nutrition-info .card {
+    border: none;
+    border-radius: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.nutrition-info .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.nutrition-info .card i {
+    color: inherit;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .nutrition-info .card {
+        margin-bottom: 15px;
+    }
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    transition: transform 0.3s;
+}
+
+.btn-success {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-success::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.5s ease;
+}
+
+.btn-success:hover::after {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.list-group-numbered > .list-group-item::before {
+    content: counters(item, ".") ". ";
+    counter-increment: item;
+    font-weight: bold;
+}
+
+.list-group-numbered {
+    counter-reset: item;
+}
