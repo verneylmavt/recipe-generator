@@ -12,7 +12,8 @@
 
 Transform your available ingredients into delicious and creative recipes with the **Recipe Generator**! Whether you're a seasoned chef or a beginner in the kitchen, this Flask-based web application helps you discover new dishes based on what you have on hand.
 
-![Recipe Generator Screenshot](static/assets/images/screenshot.png)
+![Recipe Generator Screenshot_1](static/assets/images/screenshot_1.png)
+![Recipe Generator Screenshot_2](static/assets/images/screenshot_2.png)
 
 ## Features
 
